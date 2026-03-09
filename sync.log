@@ -1,0 +1,86 @@
+2026-03-09 18:52:02,267 - INFO - === 🔄 STARTING FULL SYNC && AI UPDATE ===
+2026-03-09 18:52:02,278 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:03:44,960 - INFO - FINISHED: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:03:44,960 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:03:48,166 - INFO - FINISHED: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:03:48,166 - INFO - 📤 Exporting database to data.json...
+2026-03-09 19:03:49,080 - INFO - ✅ Exported 390 articles to D:\Stackstorage\antigravity\nieuwsfeed\frontend-design\data.json
+2026-03-09 19:03:49,080 - INFO - === ✨ FULL SYNC COMPLETED SUCCESSFULLY ===
+2026-03-09 19:16:01,417 - INFO - === 🔄 STARTING FULL SYNC && AI UPDATE ===
+2026-03-09 19:16:01,462 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:16:01,661 - ERROR - FAILED: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:16:01,662 - ERROR - Traceback (most recent call last):
+  File "D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+2026-03-09 19:16:01,662 - WARNING - Crawler had errors, but proceeding to AI processing...
+2026-03-09 19:16:01,662 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:16:01,854 - ERROR - FAILED: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:16:01,854 - ERROR - Traceback (most recent call last):
+  File "D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py", line 6, in <module>
+    from dotenv import load_dotenv
+ModuleNotFoundError: No module named 'dotenv'
+
+2026-03-09 19:16:01,854 - ERROR - AI Processor failed. Skipping export.
+2026-03-09 19:18:18,511 - INFO - === 🔄 STARTING FULL SYNC && AI UPDATE ===
+2026-03-09 19:18:18,556 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:18:18,738 - ERROR - FAILED: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:18:18,738 - ERROR - Traceback (most recent call last):
+  File "D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+2026-03-09 19:18:18,738 - WARNING - Crawler had errors, but proceeding to AI processing...
+2026-03-09 19:18:18,739 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:18:18,927 - ERROR - FAILED: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:18:18,927 - ERROR - Traceback (most recent call last):
+  File "D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py", line 6, in <module>
+    from dotenv import load_dotenv
+ModuleNotFoundError: No module named 'dotenv'
+
+2026-03-09 19:18:18,927 - ERROR - AI Processor failed. Skipping export.
+2026-03-09 19:18:20,376 - INFO - === 🔄 STARTING FULL SYNC && AI UPDATE ===
+2026-03-09 19:18:20,386 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:18:20,558 - ERROR - FAILED: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:18:20,559 - ERROR - Traceback (most recent call last):
+  File "D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+2026-03-09 19:18:20,559 - WARNING - Crawler had errors, but proceeding to AI processing...
+2026-03-09 19:18:20,559 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:18:20,742 - ERROR - FAILED: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:18:20,742 - ERROR - Traceback (most recent call last):
+  File "D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py", line 6, in <module>
+    from dotenv import load_dotenv
+ModuleNotFoundError: No module named 'dotenv'
+
+2026-03-09 19:18:20,742 - ERROR - AI Processor failed. Skipping export.
+2026-03-09 19:19:40,464 - INFO - === 🔄 STARTING FULL SYNC && AI UPDATE ===
+2026-03-09 19:19:40,510 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:19:40,740 - ERROR - FAILED: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 19:19:40,740 - ERROR - Traceback (most recent call last):
+  File "D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+2026-03-09 19:19:40,741 - WARNING - Crawler had errors, but proceeding to AI processing...
+2026-03-09 19:19:40,741 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:19:40,929 - ERROR - FAILED: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 19:19:40,929 - ERROR - Traceback (most recent call last):
+  File "D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py", line 6, in <module>
+    from dotenv import load_dotenv
+ModuleNotFoundError: No module named 'dotenv'
+
+2026-03-09 19:19:40,929 - ERROR - AI Processor failed. Skipping export.
+2026-03-09 19:23:07,685 - INFO - === 🔄 STARTING FULL SYNC && AI UPDATE ===
+2026-03-09 19:23:07,691 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 20:16:52,893 - INFO - === 🔄 STARTING FULL SYNC && AI UPDATE ===
+2026-03-09 20:16:53,963 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 20:28:17,266 - INFO - FINISHED: D:\Stackstorage\antigravity\nieuwsfeed\execution\advanced_crawler.py
+2026-03-09 20:28:17,267 - INFO - STARTING: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 20:28:20,305 - INFO - FINISHED: D:\Stackstorage\antigravity\nieuwsfeed\execution\ai_processor.py
+2026-03-09 20:28:20,305 - INFO - 📤 Exporting database to data.json...
+2026-03-09 20:28:20,401 - INFO - ✅ Exported 390 articles to D:\Stackstorage\antigravity\nieuwsfeed\frontend-design\data.json
+2026-03-09 20:28:20,404 - INFO - === ✨ FULL SYNC COMPLETED SUCCESSFULLY ===

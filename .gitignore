@@ -1,0 +1,10 @@
+# Environments
+.env
+
+# Credentials
+credentials.json
+token.json
+
+# Temporary files
+.tmp/
+!.tmp/newsfeed.db

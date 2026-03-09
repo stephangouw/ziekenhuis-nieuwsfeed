@@ -1,0 +1,350 @@
+{
+    "networks": {
+        "mProve": {
+            "hospitals": [
+                {
+                    "name": "Albert Schweitzer",
+                    "url": "https://www.asz.nl/nieuws/",
+                    "selectors": {
+                        "article": "article",
+                        "title": "h2",
+                        "link": "a",
+                        "date": "time",
+                        "content": ".content-block, main"
+                    }
+                },
+                {
+                    "name": "Isala",
+                    "url": "https://www.isala.nl/nieuws/",
+                    "selectors": {
+                        "article": ".news-item",
+                        "title": "h3",
+                        "link": "a",
+                        "date": ".date",
+                        "content": ".content, article"
+                    }
+                },
+                {
+                    "name": "Jeroen Bosch Ziekenhuis",
+                    "url": "https://www.jeroenboschziekenhuis.nl/nieuws",
+                    "selectors": {
+                        "article": ".teaser",
+                        "title": ".teaser__title",
+                        "link": "a",
+                        "date": ".teaser__date",
+                        "content": ".node__content, main"
+                    }
+                },
+                {
+                    "name": "Máxima MC",
+                    "url": "https://www.mmc.nl/nieuws/",
+                    "selectors": {
+                        "article": ".news-item",
+                        "title": "h3",
+                        "link": "a",
+                        "date": ".date",
+                        "content": ".entry-content, article"
+                    }
+                },
+                {
+                    "name": "Noordwest Ziekenhuisgroep",
+                    "url": "https://www.nwz.nl/nieuwsoverzicht-pagina",
+                    "selectors": {
+                        "article": ".list-item",
+                        "title": "h3",
+                        "link": "a",
+                        "date": ".date",
+                        "content": ".content-wrapper, main"
+                    }
+                },
+                {
+                    "name": "Rijnstate",
+                    "url": "https://www.rijnstate.nl/nieuws/",
+                    "selectors": {
+                        "article": ".news-block",
+                        "title": "h3",
+                        "link": "a",
+                        "date": ".date",
+                        "content": ".article-content, main"
+                    }
+                },
+                {
+                    "name": "Zuyderland",
+                    "url": "https://www.zuyderland.nl/nieuws/",
+                    "selectors": {
+                        "article": ".news-item",
+                        "title": "h3",
+                        "link": "a",
+                        "date": ".date",
+                        "content": ".entry-content, main"
+                    }
+                }
+            ]
+        },
+        "Brainport": {
+            "hospitals": [
+                {
+                    "name": "Máxima MC",
+                    "url": "https://www.mmc.nl/nieuws/",
+                    "selectors": {
+                        "article": ".news-item",
+                        "title": "h3",
+                        "link": "a",
+                        "date": ".date",
+                        "content": ".entry-content, article"
+                    }
+                },
+                {
+                    "name": "Catharina Ziekenhuis",
+                    "url": "https://www.catharinaziekenhuis.nl/nieuws/",
+                    "selectors": {
+                        "article": ".news-card",
+                        "title": "h3",
+                        "link": "a.news-card__link",
+                        "date": ".news-card__date",
+                        "content": ".entry-content, article"
+                    }
+                },
+                {
+                    "name": "St. Anna Ziekenhuis",
+                    "url": "https://www.annaziekenhuis.nl/nieuws/",
+                    "selectors": {
+                        "article": "article.card",
+                        "title": "h3.card__title",
+                        "link": "a.stretched-link",
+                        "date": ".card__info strong",
+                        "content": ".card__text, .article__body"
+                    }
+                },
+                {
+                    "name": "SJG Weert",
+                    "url": "https://www.sjgweert.nl/actueel/nieuws",
+                    "selectors": {
+                        "article": "li.list-item",
+                        "title": ".list-item__title a",
+                        "link": ".list-item__title a",
+                        "date": ".list-item__meta-date time",
+                        "content": ".article__body, .content"
+                    }
+                }
+            ]
+        },
+        "UMCNL": {
+            "hospitals": [
+                {
+                    "name": "Amsterdam UMC",
+                    "url": "https://www.amsterdamumc.org/nl/vandaag",
+                    "selectors": {
+                        "article": "li.teaser--news",
+                        "title": "a.teaser__title",
+                        "link": "a.teaser__title",
+                        "date": "time",
+                        "content": ".teaser__text, .article__body"
+                    }
+                },
+                {
+                    "name": "Erasmus MC",
+                    "url": "https://www.erasmusmc.nl/nl-nl/artikelen?size=10&filter=69c99108-9eed-4283-8f80-87927a4b95e9|cbb4c378-b6d4-4d3f-a5b9-c1b08b0fa230|8fa3131b-718b-4456-b03a-79da40bff9b7|4546ca01-b93b-4b61-a2cf-ff62638fdca5",
+                    "selectors": {
+                        "article": "article.teaser",
+                        "title": "h3.teaser__title",
+                        "link": "a.teaser__link",
+                        "date": "time.publication-date",
+                        "content": ".teaser__text, .article__body"
+                    }
+                },
+                {
+                    "name": "LUMC",
+                    "url": "https://www.lumc.nl/rss/nieuws/",
+                    "selectors": {
+                        "article": "item",
+                        "title": "title",
+                        "link": "link",
+                        "date": "pubDate",
+                        "content": "description"
+                    }
+                },
+                {
+                    "name": "MUMC+",
+                    "url": "https://www.mumc.nl/actueel/nieuws",
+                    "selectors": {
+                        "article": "article",
+                        "title": "h2.list-item__title a",
+                        "link": "h2.list-item__title a",
+                        "date": ".list-item__meta",
+                        "content": ".list-item__snippet, .field--name-body"
+                    }
+                },
+                {
+                    "name": "Radboudumc",
+                    "url": "https://www.radboudumc.nl/nieuws",
+                    "selectors": {
+                        "article": "a.Link-Reset",
+                        "title": "h3 strong",
+                        "link": ".",
+                        "date": "h3 ~ span",
+                        "content": ".teaser-content, .article-body"
+                    }
+                },
+                {
+                    "name": "UMCG",
+                    "url": "https://nieuws.umcg.nl/overzicht",
+                    "selectors": {
+                        "article": "a.newsroom-card",
+                        "title": "h3",
+                        "link": ".",
+                        "date": "span",
+                        "content": ".newsroom-card__text, .article-content"
+                    }
+                },
+                {
+                    "name": "UMC Utrecht",
+                    "url": "https://www.umcutrecht.nl/nieuws/rss",
+                    "selectors": {
+                        "article": "item",
+                        "title": "title",
+                        "link": "link",
+                        "date": "pubDate",
+                        "content": "description"
+                    }
+                }
+            ]
+        },
+        "STZ": {
+            "hospitals": [
+                {
+                    "name": "Amphia Ziekenhuis",
+                    "url": "https://www.amphia.nl/nieuws",
+                    "selectors": {
+                        "article": "article.c-related-page",
+                        "title": "h1.c-related-page__title",
+                        "link": "a.c-related-page__link",
+                        "date": "time",
+                        "content": "article"
+                    }
+                },
+                {
+                    "name": "Deventer Ziekenhuis",
+                    "url": "https://www.dz.nl/nieuws/algemeen",
+                    "selectors": {
+                        "article": "a[href*=\"nieuws/algemeen/\"]",
+                        "title": "h2",
+                        "link": ".",
+                        "date": "p.text-md.lg\\:text-lg",
+                        "content": "main"
+                    }
+                },
+                {
+                    "name": "Sint Antonius Ziekenhuis",
+                    "url": "https://www.antoniusziekenhuis.nl/nieuwsoverzicht/utrechtse-ziekenhuizen-en-provincie-utrecht-werken-samen-aan-duurzame-zorg",
+                    "selectors": {
+                        "article": "article.article--full",
+                        "title": "h1.article__title",
+                        "link": "a",
+                        "date": "time.article__date",
+                        "content": "section.content-section--main"
+                    }
+                },
+                {
+                    "name": "CWZ",
+                    "url": "https://www.cwz.nl/over-cwz/nieuws/",
+                    "selectors": {
+                        "article": "a.group[href^=\"/nieuws/\"]",
+                        "title": "h3",
+                        "link": ".",
+                        "date": "p",
+                        "content": ".content, article"
+                    }
+                },
+                {
+                    "name": "ETZ",
+                    "url": "https://www.etz.nl/actueel/",
+                    "selectors": {
+                        "article": ".card-item",
+                        "title": "h3.h4",
+                        "link": "h3.h4 a",
+                        "date": ".publish-date",
+                        "content": "article"
+                    }
+                },
+                {
+                    "name": "Franciscus Gasthuis & Vlietland",
+                    "url": "https://www.franciscus.nl/over-franciscus/nieuws",
+                    "selectors": {
+                        "article": "article.node-article-teaser",
+                        "title": "h3",
+                        "link": "a",
+                        "date": ".node-article-teaser__meta",
+                        "content": ".node-article-teaser__text, article"
+                    }
+                },
+                {
+                    "name": "Gelre Ziekenhuizen",
+                    "url": "https://www.gelreziekenhuizen.nl/over-ons/nieuws/",
+                    "selectors": {
+                        "article": "a[href*=\"?urile=wcm:path%3A%2Factueel%2Ftype%2Fnieuws\"]",
+                        "title": "h3",
+                        "link": ".",
+                        "date": "span.date",
+                        "content": ".content, article"
+                    }
+                },
+                {
+                    "name": "HMC",
+                    "url": "https://www.haaglandenmc.nl/nieuws/",
+                    "selectors": {
+                        "article": "article",
+                        "title": "h3",
+                        "link": "a",
+                        "date": "time",
+                        "content": "article"
+                    }
+                },
+                {
+                    "name": "HagaZiekenhuis",
+                    "url": "https://www.hagaziekenhuis.nl/nieuws/",
+                    "selectors": {
+                        "article": "article, .news-item",
+                        "title": "h2, h3",
+                        "link": "a",
+                        "date": "time, .date",
+                        "content": "article"
+                    }
+                },
+                {
+                    "name": "Maasstad Ziekenhuis",
+                    "url": "https://www.maasstadziekenhuis.nl/nieuws",
+                    "selectors": {
+                        "article": "article, .news-item",
+                        "title": "h2, h3",
+                        "link": "a",
+                        "date": "time, .date",
+                        "content": "article"
+                    }
+                },
+                {
+                    "name": "Martini Ziekenhuis",
+                    "url": "https://www.martiniziekenhuis.nl/nieuws/",
+                    "selectors": {
+                        "article": "a.c-news__item",
+                        "title": ".c-news__item__title",
+                        "link": ".",
+                        "date": ".c-news__item__date",
+                        "content": "article"
+                    }
+                },
+                {
+                    "name": "Meander MC",
+                    "url": "https://www.meandermc.nl/over-meander/nieuws/",
+                    "selectors": {
+                        "article": ".cards-holder.list a.card",
+                        "title": "h2",
+                        "link": ".",
+                        "date": "span",
+                        "content": "article"
+                    }
+                }
+            ]
+        }
+    }
+}

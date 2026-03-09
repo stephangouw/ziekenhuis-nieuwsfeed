@@ -1,0 +1,7 @@
+requests
+curl_cffi
+playwright
+beautifulsoup4
+dateparser
+python-dotenv
+google-genai
