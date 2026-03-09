@@ -84,3 +84,11 @@ ModuleNotFoundError: No module named 'dotenv'
 2026-03-09 20:28:20,305 - INFO - 📤 Exporting database to data.json...
 2026-03-09 20:28:20,401 - INFO - ✅ Exported 390 articles to D:\Stackstorage\antigravity\nieuwsfeed\frontend-design\data.json
 2026-03-09 20:28:20,404 - INFO - === ✨ FULL SYNC COMPLETED SUCCESSFULLY ===
+2026-03-09 20:34:09,678 - INFO - === 🔄 STARTING FULL SYNC && AI UPDATE ===
+2026-03-09 20:34:09,678 - INFO - STARTING: /home/runner/work/ziekenhuis-nieuwsfeed/ziekenhuis-nieuwsfeed/execution/advanced_crawler.py
+2026-03-09 20:44:52,518 - INFO - FINISHED: /home/runner/work/ziekenhuis-nieuwsfeed/ziekenhuis-nieuwsfeed/execution/advanced_crawler.py
+2026-03-09 20:44:52,518 - INFO - STARTING: /home/runner/work/ziekenhuis-nieuwsfeed/ziekenhuis-nieuwsfeed/execution/ai_processor.py
+2026-03-09 20:44:53,656 - INFO - FINISHED: /home/runner/work/ziekenhuis-nieuwsfeed/ziekenhuis-nieuwsfeed/execution/ai_processor.py
+2026-03-09 20:44:53,657 - INFO - 📤 Exporting database to data.json...
+2026-03-09 20:44:53,657 - ERROR - Failed to export: no such table: articles
+2026-03-09 20:44:53,657 - INFO - === ✨ FULL SYNC COMPLETED SUCCESSFULLY ===
