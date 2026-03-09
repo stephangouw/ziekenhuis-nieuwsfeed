@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorgNieuws - Nederlandse Ziekenhuizen</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="masthead">
+        <div class="header-content">
+            <h1 class="logo">ZorgNieuws.</h1>
+            <p class="subtitle">Geaggregeerde Inzichten uit Nederlandse Topziekenhuizen</p>
+        </div>
+        <div class="filter-bar">
+            <span>Filter overzicht:</span>
+            <div class="filter-group" id="network-filters">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="Brainport">Brainport</button>
+                <button class="filter-btn" data-filter="mProve">mProve</button>
+                <button class="filter-btn" data-filter="STZ">STZ</button>
+                <button class="filter-btn" data-filter="UMCNL">UMCNL</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="editorial-grid" id="news-container">
+        <!-- Loader / Initial state -->
+        <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Laatste nieuws ophalen...</p>
+        </div>
+    </main>
+
+    <!-- Template for Article Cards -->
+    <template id="article-template">
+        <article class="news-card fade-in">
+            <div class="card-meta">
+                <span class="hospital-name"></span>
+                <span class="meta-dot">•</span>
+                <span class="publish-date"></span>
+            </div>
+            <h2 class="card-title">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="title-link"></a>
+            </h2>
+            <div class="card-summary"></div>
+            <div class="card-footer">
+                <div class="tag-group"></div>
+                <div class="network-badge"></div>
+            </div>
+        </article>
+    </template>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
