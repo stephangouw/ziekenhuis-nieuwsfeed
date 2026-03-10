@@ -293,11 +293,14 @@ def extract_date_from_deep(soup, article_url=None):
         if date_el:
             return clean_dutch_date(date_el.get_text(strip=True))
 
-    # Elkerliek cards or article meta
-    if article_url and 'elkerliek.nl' in str(article_url):
-        # In article: often in a bold tag, strong tag, or paragraph with a date pattern
-        # Elkerliek format: "3 maart 2026"
-        for tag in soup.find_all(['strong', 'p', 'span', 'h2']):
+    # Elkerliek / DZ / CWZ format: "3 maart 2026"
+    if article_url and any(x in str(article_url) for x in ['elkerliek.nl', 'dz.nl', 'cwz.nl']):
+        # Zoek naar datum patronen in de tekst
+        for tag in soup.find_all(['p', 'span', 'strong', 'h2', 'div']):
+            text = tag.get_text(strip=True)
+            if len(text) < 50:
+                parsed = clean_dutch_date(text)
+                if parsed: return parsed
             text = tag.get_text(strip=True)
             if re.search(r'\d{1,2}\s+(jan|feb|maa|mrt|apr|mei|jun|jul|aug|sep|okt|nov|dec)', text.lower()):
                  return clean_dutch_date(text)
@@ -567,7 +570,14 @@ def process_portal(hospital_name, network_name, portal_url, cutoff_date):
                 
                 if row:
                     pub_date_str = row[0]
-                else:
+                    # Overwrite als de data van slechte kwaliteit is (bijv. "Niet gevonden" of Cloudflare tekst)
+                    cursor.execute("SELECT title, ai_summary FROM articles WHERE url = ?", (article_url,))
+                    r2 = cursor.fetchone()
+                    if r2 and (r2[0] == "Niet gevonden" or "just a moment" in r2[1].lower() or "internet explorer" in r2[1].lower()):
+                        logger.info(f"   🔄 Data van lage kwaliteit gedetecteerd voor {article_url}. Poging tot herscrapen...")
+                        row = None # Forceer herscrapen
+                
+                if not row:
                     time.sleep(1)
                     art_resp = requests.get(article_url, headers=HEADERS, timeout=10)
                     if len(art_resp.text) < 3000 and c_requests:
@@ -650,6 +660,12 @@ def process_portal_playwright(hospital, network_name, portal_url, cutoff_date):
         try:
             # Handle cookie walls and anti-bot layers
             page.goto(portal_url, wait_until="networkidle", timeout=30000)
+            
+            # Cloudflare / Challenge check
+            if "just a moment" in page.title().lower() or "cloudflare" in page.content().lower():
+                logger.info("   🛡️ Cloudflare challenge gedetecteerd. 10s wachten...")
+                page.wait_for_timeout(10000)
+
             page.wait_for_timeout(3000)
             
             # Generieke Cookie Acceptatie (werkt voor meeste NL sites)
@@ -660,7 +676,10 @@ def process_portal_playwright(hospital, network_name, portal_url, cutoff_date):
                 "button:has-text('Alle cookies')",
                 "button#acc-agree",
                 "a:has-text('Akkoord')",
-                "a.cc-btn.cc-allow"
+                "a:has-text('Cookies accepteren')",
+                "a:has-text('Accepteer cookies')",
+                "a.cc-btn.cc-allow",
+                "a.bg-magenta" # Specifiek voor DZ
             ]
             
             for selector in cookie_selectors:
@@ -734,7 +753,14 @@ def process_portal_playwright(hospital, network_name, portal_url, cutoff_date):
                     
                     if row:
                         pub_date_str = row[0]
-                    else:
+                        # Overwrite als de data van slechte kwaliteit is
+                        cursor.execute("SELECT title, ai_summary FROM articles WHERE url = ?", (article_url,))
+                        r2 = cursor.fetchone()
+                        if r2 and (r2[0] == "Niet gevonden" or "just a moment" in r2[1].lower() or "internet explorer" in r2[1].lower()):
+                            logger.info(f"   🔄 Data van lage kwaliteit gedetecteerd voor {article_url}. Poging tot herscrapen...")
+                            row = None # Forceer herscrapen
+
+                    if not row:
                         art_page = context.new_page()
                         try:
                             art_page.goto(article_url, wait_until="domcontentloaded", timeout=15000)
