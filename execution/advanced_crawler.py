@@ -24,8 +24,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Accept': 'text/html',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+    'Accept-Language': 'nl-NL,nl;q=0.9,en-US;q=0.8,en;q=0.7',
 }
 
 # Stap 1: Blacklisting (Uitsluitingen)
@@ -39,7 +40,10 @@ BLACKLIST = [
     'algemene-voorwaarden', 'disclaimer', 'privacy', 'login', '/faq/',
     '/praktische-informatie/', '/patientinformatie/', '/ziekenhuis/',
     '/specialisme/', '/behandeling/', '/onderzoek/', '/afdeling/',
-    '/locatie/', '/clientondersteuning/', '/verpleegafdeling/'
+    '/locatie/', '/clientondersteuning/', '/verpleegafdeling/',
+    'ziekenhuishulp', 'waar-staan-we-voor', 'kwaliteit', 'klachten',
+    'cookies', 'cookieverklaring', 'google-translate', 'disclaimer',
+    'voor-verwijzers', 'toegangstijden', 'vergoeding', 'rechten-en-plichten'
 ]
 
 def is_valid_url(url):
@@ -209,6 +213,16 @@ def is_article_url(url, portal_url, base_domain):
             if not any(x in url.lower() for x in bad_path_keywords):
                 return True
                 
+    # St. Antonius nieuws MOET onder /nieuwsoverzicht/ staan
+    if 'antoniusziekenhuis.nl' in url.lower():
+        if '/nieuwsoverzicht/' in url:
+            # Vermijd de overzichtspagina zelf en algemene service links
+            if url.rstrip('/') == 'https://www.antoniusziekenhuis.nl/nieuwsoverzicht':
+                return False
+            # Artikelen hebben meestal een diepere slug
+            return len(parsed.path.rstrip('/').split('/')) >= 3
+        return False
+
     return False
 
 def clean_dutch_date(date_str):
@@ -329,10 +343,12 @@ def get_h1_or_title(soup):
     return "Nieuwsbericht"
 
 def get_first_paragraph(soup):
+    boilerplate_keywords = ['cookie', 'browser', 'internet explorer', 'privacy', 'akkoord', 'instellingen']
     for p in soup.find_all('p'):
         text = p.get_text(strip=True)
         if len(text) > 80:
-            return text
+            if not any(k in text.lower() for k in boilerplate_keywords):
+                return text
     return "Lees het volledige artikel op de website van het ziekenhuis."
 
 # --- RSS LOGICA ---
@@ -636,30 +652,34 @@ def process_portal_playwright(hospital, network_name, portal_url, cutoff_date):
             page.goto(portal_url, wait_until="networkidle", timeout=30000)
             page.wait_for_timeout(3000)
             
-            # Meander MC: Click 'Akkoord' on cookie wall if present
-            if hospital_name == 'Meander MC':
-                cookie_btn = page.query_selector("button:has-text('Akkoord'), a:has-text('Akkoord')")
-                if cookie_btn and cookie_btn.is_visible():
-                    logger.info("   🍪 Klikken op cookie akkoord button voor Meander MC...")
-                    cookie_btn.click()
-                    page.wait_for_timeout(2000)
+            # Generieke Cookie Acceptatie (werkt voor meeste NL sites)
+            cookie_selectors = [
+                "button:has-text('Akkoord')", 
+                "button:has-text('Accepteer')", 
+                "button:has-text('Cookies accepteren')", 
+                "button:has-text('Alle cookies')",
+                "button#acc-agree",
+                "a:has-text('Akkoord')",
+                "a.cc-btn.cc-allow"
+            ]
             
-            # Dismiss cookie wall for Rijnstate just in case it blocks clicks
+            for selector in cookie_selectors:
+                try:
+                    btn = page.query_selector(selector)
+                    if btn and btn.is_visible():
+                        logger.info(f"   🍪 Klikken op cookie button: {selector}")
+                        btn.click()
+                        page.wait_for_timeout(1500)
+                        break # Meestal 1 knop genoeg
+                except:
+                    continue
+                
+            # Specifieke wait acties per ziekenhuis
             if hospital_name == 'Rijnstate':
                 try:
-                    cookie_btn = page.query_selector("button.cc-btn.cc-allow, button:has-text('Accepteer'), a.cc-btn.cc-allow")
-                    if cookie_btn and cookie_btn.is_visible():
-                        cookie_btn.click()
-                        page.wait_for_timeout(1000)
+                    page.wait_for_selector("a[href*='/nieuws/']", timeout=10000)
+                except: pass
                         
-                    # Force wait for articles to render
-                    try:
-                        page.wait_for_selector("a[href*='/nieuws/']", timeout=15000)
-                    except Exception as e:
-                        logger.warning(f"   ⚠️ Rijnstate wait_for_selector timeout: {e}")
-                except Exception as e: 
-                    logger.warning(f"   ⚠️ Rijnstate cookie bypass error: {e}")
-                
         except Exception as e:
             logger.error(f"   ❌ Failed to load {portal_url}: {e}")
             browser.close()
@@ -983,7 +1003,8 @@ def run_hybrid_scrapers(specific_network=None):
             elif hospital["name"] in ['Zuyderland', 'Máxima MC', 'Jeroen Bosch Ziekenhuis', 'St. Anna Ziekenhuis', 'SJG Weert', 
                                     'Amsterdam UMC', 'Erasmus MC', 'MUMC+', 'Radboudumc', 'UMCG',
                                     'CWZ', 'ETZ', 'Franciscus Gasthuis & Vlietland', 'Gelre Ziekenhuizen',
-                                    'HMC', 'HagaZiekenhuis', 'Maasstad Ziekenhuis', 'Meander MC']:
+                                    'HMC', 'HagaZiekenhuis', 'Maasstad Ziekenhuis', 'Meander MC',
+                                    'Amphia Ziekenhuis', 'Deventer Ziekenhuis', 'Martini Ziekenhuis', 'Isala']:
                 # 2A: Headless Browser Fallback (Portal met AJAX / Anti-Bot)
                 count = process_portal_playwright(hospital, network_name, portal_url, cutoff)
                 total += count

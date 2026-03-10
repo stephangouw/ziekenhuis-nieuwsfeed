@@ -236,12 +236,12 @@
                 },
                 {
                     "name": "Sint Antonius Ziekenhuis",
-                    "url": "https://www.antoniusziekenhuis.nl/nieuwsoverzicht/utrechtse-ziekenhuizen-en-provincie-utrecht-werken-samen-aan-duurzame-zorg",
+                    "url": "https://www.antoniusziekenhuis.nl/nieuwsoverzicht",
                     "selectors": {
-                        "article": "article.article--full",
-                        "title": "h1.article__title",
-                        "link": "a",
-                        "date": "time.article__date",
+                        "article": "article.teaser",
+                        "title": ".link",
+                        "link": ".link",
+                        "date": ".teaser__date",
                         "content": "section.content-section--main"
                     }
                 },
