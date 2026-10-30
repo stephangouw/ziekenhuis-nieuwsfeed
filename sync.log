@@ -1973,3 +1973,11 @@ ModuleNotFoundError: No module named 'dotenv'
 2026-10-29 14:05:29,476 - INFO - 📤 Exporting database to data.json...
 2026-10-29 14:05:29,476 - ERROR - Failed to export: no such table: articles
 2026-10-29 14:05:29,476 - INFO - === ✨ FULL SYNC COMPLETED SUCCESSFULLY ===
+2026-10-30 13:41:56,325 - INFO - === 🔄 STARTING FULL SYNC && AI UPDATE ===
+2026-10-30 13:41:56,325 - INFO - STARTING: /home/runner/work/ziekenhuis-nieuwsfeed/ziekenhuis-nieuwsfeed/execution/advanced_crawler.py
+2026-10-30 13:56:10,718 - INFO - FINISHED: /home/runner/work/ziekenhuis-nieuwsfeed/ziekenhuis-nieuwsfeed/execution/advanced_crawler.py
+2026-10-30 13:56:10,719 - INFO - STARTING: /home/runner/work/ziekenhuis-nieuwsfeed/ziekenhuis-nieuwsfeed/execution/ai_processor.py
+2026-10-30 13:56:11,340 - INFO - FINISHED: /home/runner/work/ziekenhuis-nieuwsfeed/ziekenhuis-nieuwsfeed/execution/ai_processor.py
+2026-10-30 13:56:11,340 - INFO - 📤 Exporting database to data.json...
+2026-10-30 13:56:11,341 - ERROR - Failed to export: no such table: articles
+2026-10-30 13:56:11,341 - INFO - === ✨ FULL SYNC COMPLETED SUCCESSFULLY ===
